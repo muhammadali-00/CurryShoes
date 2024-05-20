@@ -1,0 +1,84 @@
+﻿@model Lab_Asssignment._1.Models.Prd_Colour
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Website/Admin.cshtml";
+}
+
+<h4>Product Color Details</h4>
+
+<div>
+    <hr />
+    <dl class="row dl-horizontal">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Product.prd_name)
+        </dt>
+
+        <dd class="col-4">
+            @Html.DisplayFor(model => model.Product.prd_name)
+        </dd>
+    </dl>
+    <dl class="row dl-horizontal">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.colour)
+        </dt>
+
+        <dd class="col-4">
+            @Html.DisplayFor(model => model.colour)
+        </dd>
+    </dl>
+    <dl class="row dl-horizontal">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.colour_scheme)
+        </dt>
+
+        <dd class="col-4">
+            @Html.DisplayFor(model => model.colour_scheme)
+        </dd>
+    </dl>
+    <div class="row">
+        <dl class="col-4 dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.img_1)
+            </dt>
+
+            <dd>
+                @if (Model.img_1 != null)
+                {
+                    <img id="picture" src="@Url.Content(Model.img_1)" width="60px" height="60px" />
+                }
+                else { }
+            </dd>
+        </dl>
+        <dl class="col-4 dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.img_2)
+            </dt>
+
+            <dd>
+                @if (Model.img_2 != null)
+                {
+                    <img id="picture" src="@Url.Content(Model.img_2)" width="60px" height="60px" />
+                }
+                else { }
+            </dd>
+        </dl>
+        <dl class="col-4 dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.img_3)
+            </dt>
+
+            <dd>
+                @if (Model.img_3 != null)
+                {
+                    <img id="picture" src="@Url.Content(Model.img_3)" width="60px" height="60px" />
+                }
+                else { }
+            </dd>
+        </dl>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

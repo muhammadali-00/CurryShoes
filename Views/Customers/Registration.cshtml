@@ -1,0 +1,104 @@
+﻿@model Lab_Asssignment._1.Models.Customer
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/RL-Layout.cshtml";
+}
+<style>
+    .backpic {
+        background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('../../content/assets/img/reg-bg.jpg') top center no-repeat;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+    }
+</style>
+
+<section class=" backpic">
+    <div class="py-5 container">
+        <div class="row justify-content-center">
+            <div class="wrap my-4 p-4 p-md-5 col-md-12 col-lg-10">
+                <div class="d-flex w-100">
+                    <h3 class="mb-4">Registeration</h3>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <form action="#" class="signin-form ">
+                        <div class="row px-3">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="label" for="name">Username</label>
+                                    @Html.TextBoxFor(model => model.cust_name, new { @class = "form-control required", placeholder = "Username" })
+                                    @Html.ValidationMessageFor(model => model.cust_name)
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="label" for="name">Password</label>
+                                    @Html.PasswordFor(model => model.pass, new { @class = "form-control required", placeholder = "m17abc890" })
+                                    @Html.ValidationMessageFor(model => model.pass)
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row px-3">
+                               
+                        </div>
+
+                        <div class="row px-3">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="label" for="name">E-mail</label>
+                                    @Html.TextBoxFor(model => model.email, new { @class = "form-control required", placeholder = "m17@gmail.com" })
+                                    @Html.ValidationMessageFor(model => model.email)
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3 ">
+                                    <label class="label" for="password">Phone no.</label>
+                                    @Html.TextBoxFor(model => model.phone, new { @class = "form-control required", placeholder = "XXXX-XXXXXXX" })
+                                    @Html.ValidationMessageFor(model => model.phone)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row px-3">
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label class="label" for="name">Address:</label>
+                                    @Html.TextBoxFor(model => model.c_address, new { @class = "form-control required", placeholder = "Street#02, Block-14, PECHS" })
+                                    @Html.ValidationMessageFor(model => model.c_address)
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="m-2 px-2">
+                            <input style="background-color:#e51d1d; color:white" type="submit" value="Sign Up" class="btn btn-default btn-danger form-control btn rounded  px-3" />
+                        </div>
+
+                        <div class="px-3 d-md-flex">
+                            <div class="w-50 text-left">
+                                <label style="color: #e51d1d;" class="checkbox-wrap checkbox mb-0">
+                                    Terms & Conditions
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                }
+                    <p class="text-center">
+                        Already have an account?
+
+                        <a href="#" class="pl-2">
+                            @Html.ActionLink("Login", "Login", "Login", new { area = "" }, new { @class = "text-danger" })
+                        </a>
+                    </p>
+                </div>
+        </div>
+    </div>
+</section>
+

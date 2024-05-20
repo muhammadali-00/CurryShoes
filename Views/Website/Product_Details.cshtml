@@ -1,0 +1,162 @@
+﻿@model IEnumerable<Lab_Asssignment._1.Models.Prd_Details>
+@{
+    ViewBag.Title = "Product_Details";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+    var firstProduct = Model.FirstOrDefault();
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <ol>
+                <li>@Html.ActionLink("Home", "Home", "Website", new { area = "" }, new { @class = "" })</li>
+                <li>Shop</li>
+                <li>Product Details</li>
+            </ol>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Product Details Section ======= -->
+    <section class="inner-page">
+        <div class="container" data-aos="fade-up">
+            <section id="portfolio-details" class="portfolio-details">
+                <div class="container">
+
+                    @using (@Html.BeginForm())
+                    {
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <div class="portfolio-details-slider swiper">
+                                    <div class="swiper-wrapper align-items-center">
+
+                                        <div class="swiper-slide">
+                                            <img class="img-fluid" src="@Url.Content(firstProduct.Prd_Colour.img_1)" />
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                            <img class="img-fluid" src="@Url.Content(firstProduct.Prd_Colour.img_2)" />
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                            <img class="img-fluid" src="@Url.Content(firstProduct.Prd_Colour.img_3)" />
+                                        </div>
+
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 ps-5">
+                                <div class="portfolio-info">
+                                    <h3>@Html.DisplayFor(modeItem => firstProduct.Product.gender) @Html.DisplayFor(modeItem => firstProduct.Product.prd_name) '@Html.DisplayFor(modeItem => firstProduct.Prd_Colour.colour_scheme)' @Html.DisplayFor(modeItem => firstProduct.Product.Category.ctgry_name)</h3>
+                                    <p>﻿PKR @Html.DisplayFor(modeItem => firstProduct.price_current)</p>
+                                    <hr />
+                                    <ul>
+                                        <li><strong>Category</strong>: @Html.DisplayFor(modeItem => firstProduct.Product.Category.ctgry_name)</li>
+                                        <li><strong>Color</strong>: @Html.DisplayFor(modeItem => firstProduct.colour)</li>
+                                        <li><strong>Stock Availability: </strong>: Available</li>
+                                    </ul>
+                                    @if (firstProduct.Product.gender == "Unisex")
+                                    {
+                                        <p style="font-size:small"><i class="bi bi-exclamation-circle"></i>&nbsp; Shown as Men’s/Women’s equivalent (Ex. Men’s 6.5/Women’s 8)</p>
+                                    }
+                                </div>
+
+                                <div class="container-fluid my-2">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="d-inline me-3 py-2 px-3 border border-secondary rounded-1">
+                                            @*<input data_val="true" data_val_required="Please select one option." type="radio" name="qty" value="@item.size" id="@item.size)" min="1" max="5" />*@ @*&nbsp&nbsp&nbsp @item.size*@
+                                            @Html.RadioButtonFor(modelItem => item.size, Convert.ToString(item.size), new { data_val = "true", data_val_required = "Please select one option." }) &nbsp&nbsp&nbsp @item.size
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="add-cart d-inline">
+                                    <div class="container-fluid">
+                                        <form>
+                                            <label style="font-size:small" for="qty">Qty:</label><br />
+                                            <input type="number" name="qty" value="0" id="qty1" min="1" max="5" />
+
+                                            @*@Html.ActionLink("Add to Bag", "Cart", "Website", new { id = firstProduct.prd_ID, clr = firstProduct.colour, @class = "btn btn-danger px-5 m-3" })*@
+
+                                            <input type="submit" value="Add to Bag" id="@firstProduct.prd_ID" class="btn btn-danger  px-5 m-3" />
+                                        </form>
+                                        <hr />
+                                    </div>
+                                </div>
+
+                                <div class="portfolio-description ms-3">
+                                    <h6><i style="font-size: small" class="bi bi-arrow-left-right"></i>&nbsp; Return & Exchange Policy</h6>
+                                    <p style="font-size:12px">Try it on at home! We offer free returns and exchanges within 60 days if purchased from UA.com, app, or a store location. It’s fast and easy.</p><hr />
+                                </div>
+
+                                <div class="tab">
+                                    <div class="tab">
+                                        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Description</button>
+                                        <button class="tablinks" onclick="openCity(event, 'Paris')">Specs</button>
+                                        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Fit & Care</button>
+                                    </div>
+
+                                    <div id="London" class="tabcontent">
+                                        <ul>
+                                            <li>@Html.DisplayFor(modeItem => firstProduct.Product.des_1)</li>
+                                            <li>@Html.DisplayFor(modeItem => firstProduct.Product.des_2)</li>
+                                            <li>@Html.DisplayFor(modeItem => firstProduct.Product.des_3)</li>
+                                            <li>@Html.DisplayFor(modeItem => firstProduct.Product.des_4)</li>
+                                            <li>@Html.DisplayFor(modeItem => firstProduct.Product.des_5)</li>
+                                            <li>@Html.DisplayFor(modeItem => firstProduct.Product.des_6)</li>
+                                        </ul>
+                                    </div>
+
+                                    <div id="Paris" class="tabcontent">
+                                        <ul>
+                                            <li>Style #: @Html.DisplayFor(modeItem => firstProduct.Product.style_no)</li>
+                                            <li>Weight: @Html.DisplayFor(modeItem => firstProduct.w8) oz</li>
+                                            <li>Lace type: @Html.DisplayFor(modeItem => firstProduct.Product.lace_type)</li>
+                                            <li>Imported</li>
+                                        </ul>
+                                    </div>
+
+                                    <div id="Tokyo" class="tabcontent">
+                                        <ul>
+                                            <li><strong>@Html.DisplayFor(modeItem => firstProduct.Product.fit_care)</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+            </section>
+        </div>
+    </section><!-- End Product Details Section -->
+
+</main><!-- End #main -->
+<!--Tabs Functionality-->
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script><!-- End Tabs Functionality -->

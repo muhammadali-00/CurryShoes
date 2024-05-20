@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f0a7eb533ef4098b32387c92f624144" Name="Diagram1">
+        <EntityTypeShape EntityType="CurryShoesModel.Category" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="CurryShoesModel.Customer" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="CurryShoesModel.Order_Details" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CurryShoesModel.Order_Master" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CurryShoesModel.Payment" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CurryShoesModel.Prd_Colour" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CurryShoesModel.Prd_Details" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CurryShoesModel.Product" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="CurryShoesModel.FK__Product__ctgry_I__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="CurryShoesModel.FK__Order_Mas__cust___46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="CurryShoesModel.FK__Order_Det__order__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="CurryShoesModel.FK__Order_Det__prd_I__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="CurryShoesModel.FK__Order_Mas__pay_I__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="CurryShoesModel.FK__Prd_Colou__prd_I__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="CurryShoesModel.FK_PColour" ManuallyRouted="false" />
+        <AssociationConnector Association="CurryShoesModel.FK__Prd_Detai__prd_I__49C3F6B7" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

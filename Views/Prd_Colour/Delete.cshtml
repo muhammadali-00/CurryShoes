@@ -1,0 +1,90 @@
+﻿@model Lab_Asssignment._1.Models.Prd_Colour
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Website/Admin.cshtml";
+}
+
+<h4>Delete Product Colour</h4>
+
+<h5 class="text-danger"><strong>Are you sure you want to delete this?</strong></h5>
+<div>
+    <hr />
+    <dl class="row dl-horizontal">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Product.prd_name)
+        </dt>
+
+        <dd class="col-4">
+            @Html.DisplayFor(model => model.Product.prd_name)
+        </dd>
+    </dl>
+    <dl class="row dl-horizontal">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.colour)
+        </dt>
+
+        <dd class="col-4">
+            @Html.DisplayFor(model => model.colour)
+        </dd>
+    </dl>
+    <dl class="row dl-horizontal">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.colour_scheme)
+        </dt>
+
+        <dd class="col-4">
+            @Html.DisplayFor(model => model.colour_scheme)
+        </dd>
+    </dl>
+    <dl class="row dl-horizontal">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.img_1)
+        </dt>
+
+        <dd class="col-9">
+            @if (Model.img_1 != null)
+            {
+                <img id="picture" src="@Url.Content(Model.img_1)" width="60px" height="60px" />
+            }
+            else { }
+        </dd>
+    </dl>
+    <dl class="row dl-horizontal">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.img_2)
+        </dt>
+
+        <dd class="col-9">
+            @if (Model.img_2 != null)
+            {
+                <img id="picture" src="@Url.Content(Model.img_2)" width="60px" height="60px" />
+            }
+            else { }
+        </dd>
+    </dl>
+    <dl class="row dl-horizontal">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.img_3)
+        </dt>
+
+        <dd class="col-9">
+            @if (Model.img_3 != null)
+            {
+                <img id="picture" src="@Url.Content(Model.img_3)" width="60px" height="60px" />
+            }
+            else { }
+        </dd>
+    </dl>
+    
+</div>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions my-3 no-color">
+            <input type="submit" value="Delete" class="btn btn-default btn-danger text-white" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

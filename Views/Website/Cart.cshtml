@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Lab_Asssignment._1.Models.Cart>
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<div class="" id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <ol>
+                    <li>@Html.ActionLink("Home", "Home", "Website", new { area = "" }, new { @class = "" })</li>
+                    <li>Cart</li>
+                </ol>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+        <div class="container-fluid px-5 py-3 pb-5">
+            @if (TempData["cart"] != null)
+            {
+
+
+                <table class="mt-5 table table-responsive">
+
+                    <thead>
+                        <tr>
+                            <th colspan="5"><h4 class="bi bi-bag">&nbsp;Your Bag</h4></th>
+
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>NAME</th>
+                            <th>COLOUR</th>
+                            @*<th>size</th>*@
+                            <th>PRICE</th>
+                            <th>QUANTITY</th>
+                            <th>BILL</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in TempData["cart"] as List<Lab_Asssignment._1.Models.Cart>)
+                        {
+
+                            <tr>
+                                <td>
+                                    <img class="img-fluid" src="@Url.Content(item.cart_prd_img)" width="15%" height="30%" />
+                                </td>
+                                <td>@item.cart_prd_name</td>
+                                <td>@item.cart_prd_colour</td>
+                                @*<td>@item.cart_prd_size</td>*@
+                                <td>@item.cart_prd_price</td>
+                                <td>@item.cart_prd_qty</td>
+                                <td>@item.cart_prd_bill</td>
+                                <td><a class="btn btn-danger btn-sm" href="@Url.Action("Remove",new{id=@item.cart_prd_id, clr = item.cart_prd_colour})">&#10060;</a></td>
+                            </tr>
+
+                        }
+
+                    </tbody>
+
+                </table>
+
+            }
+            else
+            {
+                <h2 style="color:red"> Cart is empty....</h2>
+                @Html.ActionLink("go Back", "Shop", "Website")
+            }
+
+            @if (TempData["cart"] != null)
+            {
+                using (Html.BeginForm("Checkout", "Website"))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row my-4">
+                        <div class="col-11">
+                            <input type="submit" value="Check out" class="btn btn-primary" />
+                        </div>
+                        <div class="col-1">
+                            @TempData["total"]
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+</div>
+
+
+

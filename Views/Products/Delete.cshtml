@@ -1,0 +1,126 @@
+﻿@model Lab_Asssignment._1.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Website/Admin.cshtml";
+}
+<style>
+    td, th {
+        border-top: none;
+        border-bottom: none;
+    }
+</style>
+
+<h4>Delete Product</h4>
+
+<h4 class="text-danger">Are you sure you want to delete this?</h4>
+<div>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.prd_name)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.prd_name)
+            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.ctgry_name)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.Category.ctgry_name)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.gender)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.gender)
+            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.style_no)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.style_no)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.lace_type)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.lace_type)
+            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.fit_care)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.fit_care)
+            </td>
+        </tr>
+    </table>
+    <h5>Description</h5>
+    <div>
+        <dl class="row dl-horizontal">
+            <dt class="col-2">
+                @Html.DisplayNameFor(model => model.des_1)
+            </dt>
+
+            <dd class="col-10">
+                @Html.DisplayFor(model => model.des_1)
+            </dd>
+
+            <dt class="col-2">
+                @Html.DisplayNameFor(model => model.des_2)
+            </dt>
+
+            <dd class="col-10">
+                @Html.DisplayFor(model => model.des_2)
+            </dd>
+
+            <dt class="col-2">
+                @Html.DisplayNameFor(model => model.des_3)
+            </dt>
+
+            <dd class="col-10">
+                @Html.DisplayFor(model => model.des_3)
+            </dd>
+
+            <dt class="col-2">
+                @Html.DisplayNameFor(model => model.des_4)
+            </dt>
+
+            <dd class="col-10">
+                @Html.DisplayFor(model => model.des_4)
+            </dd>
+
+            <dt class="col-2">
+                @Html.DisplayNameFor(model => model.des_5)
+            </dt>
+
+            <dd class="col-10">
+                @Html.DisplayFor(model => model.des_5)
+            </dd>
+
+            <dt class="col-2">
+                @Html.DisplayNameFor(model => model.des_6)
+            </dt>
+
+            <dd class="col-10">
+                @Html.DisplayFor(model => model.des_6)
+            </dd>
+
+        </dl>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color mb-3">
+            <input type="submit" value="Delete" class="btn btn-default bg-danger text-white" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

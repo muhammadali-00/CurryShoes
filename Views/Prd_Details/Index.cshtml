@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Lab_Asssignment._1.Models.Prd_Details>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Website/Admin.cshtml";
+}
+
+<h4>Product Details</h4>
+
+<p>
+    @Html.ActionLink("Add New Details", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.prd_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.colour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.w8)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price_current)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.prd_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.colour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.w8)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price_current)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.prd_ID, clr = item.colour, size = item.size }) |
+            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id = item.prd_ID, clr = item.colour, size = item.size })
+        </td>
+    </tr>
+}
+
+</table>

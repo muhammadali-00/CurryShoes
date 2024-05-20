@@ -1,0 +1,127 @@
+﻿@model Lab_Asssignment._1.Models.CheckoutModelView
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+
+<div id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <ol>
+                <li>@Html.ActionLink("Home", "Home", "Website", new { area = "" }, new { @class = "" })</li>
+                <li>@Html.ActionLink("Cart", "Cart", "Website", new { area = "" }, new { @class = "" })</li>
+                <li>Checkout</li>
+            </ol>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <div class="mt-4 px-5 container-fluid row">
+        <h3>Customer Information</h3>
+
+        @if (Session["email"] != null)
+        {
+            <p>Welcome @Session["email"].ToString() </p>
+        }
+
+        @using (Html.BeginForm("Checkout_proceed", "Website", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr class="col-6" />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.TextBoxFor(m => m.orderMaster.cust_ID, new { @Value = Model.customer.cust_ID@*,@type="hidden"*@ }) 
+
+                <div class="col-lg-10">
+                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <div class="row my-3">
+                            <div class="col-4 form-group">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.customer.cust_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.customer.cust_name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.customer.cust_name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-4 form-group">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.customer.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.customer.email, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.customer.email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 form-group">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.customer.phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.customer.phone, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.customer.phone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group my-3">
+                            <div class="col-9 form-group">
+                                @Html.LabelFor(model => model.orderMaster.d_address, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.customer.c_address, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.orderMaster.d_address, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col-6">
+                                <input class="btn btn-danger" type="submit" value="Place Your Order" />
+                            </div>
+                            <div class="col-6">
+                                @Html.ActionLink("Back to Cart", "Cart", "Website", new { @class = "btn btn-danger" })
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+        <!--<div class="container-fluid px-5 py-3 pb-5 col-6">
+        <table class="mt-5 table table-responsive">-->
+        @*@foreach (var item in TempData["cart"] as List<Lab_Asssignment._1.Models.Cart>)*@
+        <!--{
+
+    <tr>
+        <td>-->
+        @*<img class="img-fluid" src="@Url.Content(item.cart_prd_img)" width="15%" height="30%" />*@
+        <!--</td>
+    <td>-->
+        @*@item.cart_prd_name*@
+        <!--</td>
+    <td>-->
+        @*@item.cart_prd_colour*@<!--</td>-->
+        @*<td>@item.cart_prd_size</td>*@
+        <!--<td>-->@*@item.cart_prd_price*@
+        <!--</td>
+    <td>-->
+        @*@item.cart_prd_qty*@
+        <!--</td>
+    <td>-->
+        @*@item.cart_prd_bill*@
+        <!--</td>
+            </tr>
+
+            }
+        </table>
+    </div>-->
+
+
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Lab_Asssignment._1.Models.Prd_Colour>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Website/Admin.cshtml";
+}
+<h4>Product Image & Colour</h4>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.prd_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.colour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.colour_scheme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.img_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.img_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.img_3)
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.prd_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.colour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.colour_scheme)
+        </td>
+        <td>
+            @if (item.img_1 != null)
+            {
+                <img id="picture" src="@Url.Content(item.img_1)" width="60px" height="60px" />
+            }
+            else { }
+        </td>
+        <td>
+            @if (item.img_2 != null)
+            {
+                <img id="picture" src="@Url.Content(item.img_2)" width="60px" height="60px" />
+            }
+            else { }
+        </td>
+        <td>
+            @if (item.img_3 != null)
+            {
+                <img id="picture" src="@Url.Content(item.img_3)" width="60px" height="60px" />
+            }
+            else { }
+                
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.prd_ID, clr_id = item.colour }) |
+            @Html.ActionLink("Details", "Details", new { id = item.prd_ID, clr_id = item.colour }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.prd_ID, clr_id = item.colour })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,36 @@
+﻿@model Lab_Asssignment._1.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Website/Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Category</h4>
+    <hr />
+    <dl class=" row dl-horizontal">
+        <dt class="col-2">
+            @Html.DisplayNameFor(model => model.ctgry_ID)
+        </dt>
+
+        <dd class="col" 2>
+            @Html.DisplayFor(model => model.ctgry_ID)
+        </dd>
+    </dl>
+    <dl class="row dl-horizontal">
+        <dt class="col-2">
+            @Html.DisplayNameFor(model => model.ctgry_name)
+        </dt>
+
+        <dd class="col" 2>
+            @Html.DisplayFor(model => model.ctgry_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ctgry_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

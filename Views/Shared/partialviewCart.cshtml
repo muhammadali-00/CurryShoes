@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div class="container-fluid">
+        @if (TempData["cart"] != null)
+        {
+
+
+            <table class="mt-5 table table-responsive">
+
+                <tbody>
+                    @foreach (var item in TempData["cart"] as List<Lab_Asssignment._1.Models.Cart>)
+                    {
+
+                        <tr>
+                            <td>
+                                <img class="img-fluid" src="@Url.Content(item.cart_prd_img)" width="15%" height="30%" />
+                            </td>
+                            <td>@item.cart_prd_name</td>
+                            <td>@item.cart_prd_colour</td>
+                            @*<td>@item.cart_prd_size</td>*@
+                            <td>@item.cart_prd_price</td>
+                            <td>@item.cart_prd_qty</td>
+                            <td>@item.cart_prd_bill</td>
+                        </tr>
+
+                    }
+
+                </tbody>
+
+            </table>
+
+        }
+        else
+        {
+            <h2 style="color:red"> Cart is empty....</h2>
+            @Html.ActionLink("go Back", "Shop", "Website")
+        }
+
+        @if (TempData["cart"] != null)
+        {
+            using (Html.BeginForm("Checkout", "Website"))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row mt-1">
+                    <div class="col-11">
+                        <p>Sub Total:</p>
+                    </div>
+                    <div class="col">
+                        @TempData["total"]
+                    </div>
+                </div><div class="row mt-1">
+                    <div class="col-11">
+                        <p>Delivery Charges:</p>
+                    </div>
+                    <div class="col">
+                        0.00
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-11">
+                        <p>Net Total:</p>
+                    </div>
+                    <div class="col">
+                        @TempData["total"]
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>
